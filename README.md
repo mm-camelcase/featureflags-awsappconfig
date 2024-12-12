@@ -162,11 +162,10 @@ The application set up an client side AppConfig session and intermittently polls
 
 ### AppConfig integrated with AWS messaging
 
-> ℹ️ **Info:** This is an informational alert box.
+> :information_source: **Info:** AWS AppConfig has [extension](https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions-about-predefined.html) functionality that can help you integrate the AWS AppConfig workflow with other internal AWS services such as [SQS](https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions-about-predefined-notification-sqs.html) & [SNS](https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions-about-predefined-notification-sns.html), and also external services such as [Jira](https://aws.amazon.com/blogs/mt/tracking-feature-flags-in-jira-with-aws-appconfig/).
 
 
-
-> ⚠️ **Warning:** This is a warning alert box. Be careful!
+<!-- > ⚠️ **Warning:** This is a warning alert box. Be careful!
 
 > ✅ **Success:** The operation was completed successfully.
 
@@ -177,38 +176,36 @@ The application set up an client side AppConfig session and intermittently polls
 
 > :white_check_mark: **Success:** The operation was completed successfully.
 
-> :x: **Error:** Something went wrong. Please try again.
+> :x: **Error:** Something went wrong. Please try again. -->
 
 
 
 
 
 
-AWS AppConfig has 
-such as 
-SQS SNS
-& 
-extension
-functionality that can help you integrate the AWS AppConfig workflow with other internal AWS services 
-, and also external services such as 
-The AWS AppConfig 
-configuration
-Jira
-.
-in the example code has been integrated with the  
-appconfig
-SQS queue for the following AppConfig action points…
-ON_DEPLOYMENT_START
-ON_DEPLOYMENT_STEP
-ON_DEPLOYMENT_BAKING
-ON_DEPLOYMENT_COMPLETE
-ON_DEPLOYMENT_ROLLED_BACK
+The AWS AppConfig [configuration](infra/appconfig-sqs.tf) in the example code has been integrated with the SQS [extension](https://docs.aws.amazon.com/appconfig/latest/userguide/working-with-appconfig-extensions-about-predefined-notification-sqs.html) and will send messages to the `cc-poc-appconfig` SQS queue for the following AppConfig action points…
+
+
+- `ON_DEPLOYMENT_START`
+- `ON_DEPLOYMENT_STEP`
+- `ON_DEPLOYMENT_BAKING`
+- `ON_DEPLOYMENT_COMPLETE`
+- `ON_DEPLOYMENT_ROLLED_BACK`
+
+
 The application must then request the latest data from AppConfig.
+
+> :warning: **Note:** Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application behavior:
+- Event is detected in application
+- Application starts asynchronous polling session
+- Application polls until no data is returned in the response
+- Polling ends
+
+
 SQS extension
 and will send messages to the 
 int-poc
-Note: Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application 
-behavior:
+Note: Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application behavior:
 Event is detected in application
 Application starts asynchronous polling session
 Application polls until no data is returned in the response
