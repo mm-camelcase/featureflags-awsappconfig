@@ -199,21 +199,11 @@ The application must then request the latest data from AppConfig.
 > - Event is detected in application
 > - Application starts asynchronous polling session
 > - Application polls until no data is returned in the response
-> - Polling ends
-  
+> - Polling ends  
 >If an event arrives while polling is in progress the current polling session is cancelled and a new one is started.
 
 
-SQS extension
-and will send messages to the 
-int-poc
-Note: Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application behavior:
-Event is detected in application
-Application starts asynchronous polling session
-Application polls until no data is returned in the response
-Polling ends
-If an event arrives while polling is in progress the current polling session is cancelled and a new one is started.
-Application Configuration
+## Application Configuration
 The example code in this guide adds Feature Flag functionality to a sample API (implemented in 
 The following libraries were used…
 Dependency
