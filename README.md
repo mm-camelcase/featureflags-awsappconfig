@@ -171,6 +171,16 @@ The application set up an client side AppConfig session and intermittently polls
 > ✅ **Success:** The operation was completed successfully.
 
 
+> :information_source: **Info:** This is an informational alert box.
+
+> :warning: **Warning:** This is a warning alert box. Be careful!
+
+> :white_check_mark: **Success:** The operation was completed successfully.
+
+> :x: **Error:** Something went wrong. Please try again.
+
+
+
 
 
 
