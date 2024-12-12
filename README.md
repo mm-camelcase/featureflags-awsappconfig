@@ -152,13 +152,28 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 | **Config Profiles & Feature Flags**                          | **Environments**                            | **Flags**                            |
 
 
-your local AWS user may lack some of the IAM permissions required. If this is 
-How AppConfig works in your application
-Vanilla behavior
+
+## How AppConfig works in your application
+
+### Vanilla behavior
 The application set up an client side AppConfig session and intermittently polls for updates to feature flag data. When the
-response returns data, the server side data has been updated and your app should reflect that
-response is empty, you already have the latest data
-AppConfig integrated with AWS messaging
+- response returns data, the server side data has been updated and your app should reflect that
+- response is empty, you already have the latest data
+
+### AppConfig integrated with AWS messaging
+
+> ℹ️ **Info:** This is an informational alert box.
+
+
+
+> ⚠️ **Warning:** This is a warning alert box. Be careful!
+
+> ✅ **Success:** The operation was completed successfully.
+
+
+
+
+
 AWS AppConfig has 
 such as 
 SQS SNS
