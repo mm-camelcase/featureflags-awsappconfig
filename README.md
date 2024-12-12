@@ -106,7 +106,7 @@ schema.
 
 To allow AppConfig deployment rollbacks triggered by CloudWatch alarms, configure the following IAM roles and policy
 
-```json
+```hcl
 resource "aws_iam_policy" "cc_poc_rollback" {
   name        = "cc-poc-rollback-policy"  
   policy = jsonencode({
