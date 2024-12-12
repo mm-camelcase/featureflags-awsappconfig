@@ -204,8 +204,9 @@ The application must then request the latest data from AppConfig.
 
 
 ## Application Configuration
-The example code in this guide adds Feature Flag functionality to a sample API (implemented in 
+The example code in this guide adds Feature Flag functionality to a sample client.
 The following libraries were used…
+
 Dependency
 Maven Library
 previous guides
@@ -218,16 +219,39 @@ Starter
 Jackson Databind
 The AWS Java SDK for App Config Data module holds the client 
 classes that are used for communicating with App Config Data.
-Note: This package is from the 
-AWS SDK v2
-recommend is used going forward… i.e. do not use older v1 libs
+Note: This package is from the [AWS SDK v2](https://github.com/aws/aws-sdk-java-v2) which amazon  recommend is used going forward… i.e. do not use older v1 libs
 which amazon 
-spring-cloud-starter-aws
-messaging
+spring-cloud-starter-aws-messaging
 jackson-databind
-The implementation consists of …
-a 
-listener
+
+
+| **Dependency** | **Maven Library** | **Description** |
+|----------------|-----------------|------------------|
+| [AppConfigData](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/appconfigdata/package-summary.html)  | `appconfigdata`   | The AWS Java SDK for App Config Data module holds the client classes that are used for communicating with App Config Data.   **Note:** This package is from the [AWS SDK v2](https://github.com/aws/aws-sdk-java-v2) which amazon  recommend is used going forward… i.e. do not use older v1 libs  |
+| [Spring Cloud for AWS Messaging Starter](https://www.baeldung.com/spring-cloud-aws-messaging)  | `spring-cloud-starter-aws-messaging`   | AWS SQS (Simple Queue Service) & SNS (Simple Notification Service) messaging support  |
+| [Jackson Databind](https://github.com/FasterXML/jackson-databind)  | `jackson-databind`   | General-purpose data-binding functionality  |
+
+
+
+The implementation consists of...
+
+- a listener that listens for SQS events associated with the AppConfig configuration
+  > :information_source: **Info:** If  multiple task/container instances are required the a SNS AppConfig extension integration should be used.
+- a service that can retrieve App Config Data
+- a service that stores feature flag state in memory
+- properties in application.yml
+
+```yml
+awsappconfig:
+  appId: *******
+  envId: *******
+  configProfileId: *******
+  region: eu-central-1
+  sqs-queue-name: cc-poc-appconfig
+```
+
+
+
 AWS SQS (Simple Queue Service) &
 SNS (Simple Notification Service) messaging support
 General-purpose data-binding functionality
