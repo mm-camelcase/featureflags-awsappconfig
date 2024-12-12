@@ -235,7 +235,7 @@ jackson-databind
 
 The implementation consists of...
 
-- a listener that listens for SQS events associated with the AppConfig configuration
+- a [listener](impl/AppConfigListener.java#L27) that listens for SQS events associated with the AppConfig configuration
   > :information_source: **Info:** If  multiple task/container instances are required the a SNS AppConfig extension integration should be used.
 - a service that can retrieve App Config Data
 - a service that stores feature flag state in memory
@@ -250,26 +250,9 @@ awsappconfig:
   sqs-queue-name: cc-poc-appconfig
 ```
 
+### Example Feature Flags
 
 
-AWS SQS (Simple Queue Service) &
-SNS (Simple Notification Service) messaging support
-General-purpose data-binding functionality
-that listens for SQS events associated with the AppConfig configuration
-If we want to scale to multiple task/container instances we should switch to a SNS AppConfig extension integration
-a 
-a 
-service
-that can retrieve App Config Data
-service
-properties in application.yml
-that stores feature flag state in memory
-awsappconfig:
-appId: *******
-envId: *******
-configProfileId: *******
-region: eu-central-1
-sqs-queue-name: int-poc-appconfig
 Example Feature Flags
 The example code has these flags…
 Key/Name
