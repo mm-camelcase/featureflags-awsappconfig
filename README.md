@@ -98,7 +98,7 @@ schema.
         "sqs:ReceiveMessage",
         "sqs:GetQueueAttributes"
       ],
-      Resource": "*"
+      "Resource": "*"
     }
   ]
 }
