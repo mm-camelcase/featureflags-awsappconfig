@@ -147,7 +147,7 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 
 - When deployed check the AppConfig console  
 
-| ![Index Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig1.png) |
+| ![Index Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig2.png) | ![Swagger Image](assets/images/appconfig3.png) |
 |--------------------------------------|------------------------------------------|------------------------------------------|
 | **Index Page**                          | **API Page**                            | **API Page**                            |
 
