@@ -144,15 +144,14 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 }
 ```
 
-These terraform configurations can be run…
-from your local workstation by following 
-this guide Note:
-(
-the case go with the next option)
-from 
-Jenkins pipeline
-this
-When deployed check the AppConfig console
+
+- When deployed check the AppConfig console  
+
+| ![Index Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig1.png) || ![Swagger Image](assets/images/appconfig1.png) |
+|--------------------------------------|------------------------------------------|------------------------------------------|
+| **Index Page**                          | **API Page**                            | **API Page**                            |
+
+
 your local AWS user may lack some of the IAM permissions required. If this is 
 How AppConfig works in your application
 Vanilla behavior
