@@ -149,7 +149,7 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 
 | ![Index Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig2.png) | ![Swagger Image](assets/images/appconfig3.png) |
 |--------------------------------------|------------------------------------------|------------------------------------------|
-| **Index Page**                          | **API Page**                            | **API Page**                            |
+| **Config Profiles & Feature Flags**                          | **Environments**                            | **Flags**                            |
 
 
 your local AWS user may lack some of the IAM permissions required. If this is 
