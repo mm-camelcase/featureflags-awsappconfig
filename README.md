@@ -196,10 +196,12 @@ The AWS AppConfig [configuration](infra/appconfig-sqs.tf) in the example code ha
 The application must then request the latest data from AppConfig.
 
 > :warning: **Note:** Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application behavior:
-- Event is detected in application
-- Application starts asynchronous polling session
-- Application polls until no data is returned in the response
-- Polling ends
+> - Event is detected in application
+> - Application starts asynchronous polling session
+> - Application polls until no data is returned in the response
+> - Polling ends
+  
+>If an event arrives while polling is in progress the current polling session is cancelled and a new one is started.
 
 
 SQS extension
