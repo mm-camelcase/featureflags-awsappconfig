@@ -133,7 +133,7 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 
 ## How AppConfig works in your application
 
-### Vanilla behavior
+### Vanilla behaviour
 The application setup a client-side AppConfig session and intermittently polls for updates to feature flag data. When the
 - response returns data, the server-side data has been updated and your app should reflect that
 - response is empty, you already have the latest data
