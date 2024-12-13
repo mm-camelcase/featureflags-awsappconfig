@@ -221,7 +221,17 @@ There are some recommended guidelines to help feature flag functionality in the 
 - Inversion of control - further decouple modules from the feature flagging system using [IoC](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
 - Minimize conditionals - keep the codebase maintainable by avoiding directly adding `if-else` statement blocks to code. Especially if a feature is long lived or requires several toggles.
 
+#### Toggles at the edge
 
+Placing toggles points in the UI or controllers are appropriate when
+- you want to show or hide UI elements
+- the toggle requires a per-request context
+- the toggle requires a per-user context
+
+An [advantage](https://martinfowler.com/articles/feature-toggles.html#TogglesAtTheEdge) of placing toggle points at the edge is that it keeps fiddley conditional logic out of the core of the system.
+
+
+#### Toggles in the core
 
 updated independently from decision points
 statement blocks to code. Especially if a feature 
