@@ -35,23 +35,13 @@ Service Security - Service to Service Auth
  ### Overview
  
 This walk-through describes how to implement and configure feature flags in a stand alone Spring Boot application backed by AWS AppConfig.
-The accompanying source code for this guide…
+The accompanying source code for this guide...
 
-
- Repo
- Application Code
- Infrastructure as Code
- Description
- A Spring Boot project with secured API endpoints
- Pipeline
- link
- This repo is responsible for defining all necessary infrastructure required 
-for a feature flag implementation using AWS AppConfig. Resources 
-include AppConfig’s application, environments, configuration profiles, 
-extension associations and IAM permissions.
+| **Repo** | **Description** |
+|----------------|-----------------|
+| [Sample Application Code](impl/)  | Sample Spring Boot project with AWS AppConfig  |
+| [Infrastructure as Code](infra/)  | Configurations for defining the necessary infrastructure required for a feature flag implementation using AWS AppConfig. Resources include AppConfig’s application, environments, configuration profiles, extension associations and IAM permissions.   | 
  
- link
-
 ### About Feature Flags
  
 _(aka Feature Toggles, Feature Flippers, Feature Switch, Feature Controls, Feature Bits, Release Toggles, Conditional Features)_  
@@ -237,9 +227,9 @@ The implementation consists of...
 
 - a [listener](impl/AppConfigListener.java#L27) that listens for SQS events associated with the AppConfig configuration
   > :information_source: **Info:** If  multiple task/container instances are required the a SNS AppConfig extension integration should be used.
-- a service that can retrieve App Config Data
-- a service that stores feature flag state in memory
-- properties in application.yml
+- a [service](impl/AppConfigRequestService.java#L26) that can retrieve App Config Data
+- a [service](impl/AppConfigsService.java) that stores feature flag state in memory
+- properties in `application.yml`
 
 ```yml
 awsappconfig:
@@ -252,9 +242,11 @@ awsappconfig:
 
 ### Example Feature Flags
 
+The example code has these flags...
 
-Example Feature Flags
-The example code has these flags…
+
+
+
 Key/Name
 logLevels
 newFeature
