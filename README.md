@@ -233,6 +233,75 @@ An [advantage](https://martinfowler.com/articles/feature-toggles.html#TogglesAtT
 
 #### Toggles in the core
 
+Some examples of lower level toggle...
+
+##### Conditional
+
+In some very simple cases maybe a simple conditional block is appropriate
+
+```java
+...
+@Autowired
+private AppConfigsService appConfigsService;
+public String doSomething() {
+    if (appConfigsService.getAppConfigs().getNewFeature().isEnabled()) {
+        return "New Implementation";
+    } else {
+        return "Default Implementation";
+    }
+}
+...
+```
+
+##### Replace Method
+
+To replace functionality on the method level we can introduce an interface for the target method(s), then implement a "proxy" between two (or more) implementations of that interface.
+
+```java
+...
+@Autowired
+private AppConfigsService appConfigsService;
+@Qualifier("replaceMethodNewService")
+@Autowired
+private NewService newService;
+@Qualifier("replaceMethodDefaultService")
+@Autowired
+private DefaultService defaultService;
+
+@Override
+public String doSomething() {
+    if (appConfigsService.getAppConfigs().getNewFeature().isEnabled()) {
+        return newService.doSomething();
+    } else {
+        return defaultService.doSomething();
+    }
+}
+...
+```
+
+##### Replace Bean
+
+To replace a whole bean based on a feature flag we can leverage Springs FactoryBean interface. Each time a bean defined using the FactoryBean method is required by another bean in the application context, Spring will ask the FactoryBean for that bean.
+
+```java
+@Component("replaceBeanFeatureFlaggedService")
+public class FeatureFlaggedService extends FeatureFlagFactoryBean<Service> {
+    public FeatureFlaggedService(AppConfigsService appConfigsService) {
+            super(
+            Service.class,
+            () -> appConfigsService.getAppConfigs().getNewFeature().
+    isEnabled(),
+            new NewService(),
+            new DefaultService()
+        );
+    }
+}
+```
+
+##### Replace Module
+
+” bean that switches 
+
 updated independently from decision points
 statement blocks to code. Especially if a feature 
 is long lived or requires several toggles
