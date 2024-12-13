@@ -1,7 +1,23 @@
 ## Feature Flags with AWS AppConfig  
 
 
-TOC  
+- [Overview](#overview)
+- [About Feature Flags](#about-feature-flags)
+- [Infrastructure Setup](#infrastructure-setup)
+- [How AppConfig Works in Your Application](#how-appconfig-works-in-your-application)
+  - [Vanilla Behaviour](#vanilla-behaviour)
+  - [AppConfig Integrated with AWS Messaging](#appconfig-integrated-with-aws-messaging)
+- [Application Configuration](#application-configuration)
+  - [Example Feature Flags](#example-feature-flags)
+  - [Implementation Strategies](#implementation-strategies)
+    - [Toggles at the Edge](#toggles-at-the-edge)
+    - [Toggles in the Core](#toggles-in-the-core)
+      - [Conditional](#conditional)
+      - [Replace Method](#replace-method)
+      - [Replace Bean](#replace-bean)
+      - [Replace Module](#replace-module)
+- [Considerations](#considerations)
+- [References](#references)
 
 
  ### Overview
