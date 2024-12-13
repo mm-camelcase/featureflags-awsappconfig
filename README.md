@@ -115,7 +115,7 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 ```
 
 
-- When deployed check the AppConfig console  
+- When deployed check the [AppConfig console](https://eu-central-1.console.aws.amazon.com/systems-manager/appconfig/?region=eu-central-1)  
 
 | ![Index Image](assets/images/appconfig1.png) | ![Swagger Image](assets/images/appconfig2.png) | ![Swagger Image](assets/images/appconfig3.png) |
 |--------------------------------------|------------------------------------------|------------------------------------------|
