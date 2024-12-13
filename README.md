@@ -9,27 +9,7 @@ todo - change int refs to cc
 ## Feature Flags with AWS AppConfig  
 
 
-This example code used in this guide builds on the code used in the previous guide.
-Service Security - Service to Service Auth
-
-
- Overview
- About Feature Flags
- Infrastructure Setup
- How AppConfig works in your application
- Vanilla behavior
- AppConfig integrated with AWS messaging
- Application Configuration
- Example Feature Flags
- Implementation Strategies
- Toggles at the edge
- Toggles in the core
- Conditional
- Replace Method
- Replace Bean
- Replace Module
- Considerations
- References
+TOC  
 
 
  ### Overview
