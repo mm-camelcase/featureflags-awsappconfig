@@ -287,10 +287,9 @@ To replace a whole bean based on a feature flag we can leverage Springs FactoryB
 @Component("replaceBeanFeatureFlaggedService")
 public class FeatureFlaggedService extends FeatureFlagFactoryBean<Service> {
     public FeatureFlaggedService(AppConfigsService appConfigsService) {
-            super(
+        super(
             Service.class,
-            () -> appConfigsService.getAppConfigs().getNewFeature().
-    isEnabled(),
+            () -> appConfigsService.getAppConfigs().getNewFeature().isEnabled(),
             new NewService(),
             new DefaultService()
         );
@@ -300,116 +299,42 @@ public class FeatureFlaggedService extends FeatureFlagFactoryBean<Service> {
 
 ##### Replace Module
 
-” bean that switches 
+The FactoryBean interface can be used to replace a set of beans also
 
-updated independently from decision points
-statement blocks to code. Especially if a feature 
-is long lived or requires several toggles
-Toggles at the edge
-Placing toggles points in the UI or controllers are appropriate when
-An 
-you want to show or hide UI elements
-the toggle requires a per-request context
-the toggle requires a per-user context
-advantage
-of placing toggle points at the edge is that it keeps fiddley conditional logic out of the core of the system.
-Toggles in the core
-Some examples of lower level toggles…
-Conditional
-In some very simple cases maybe a simple 
-conditional block
-is appropriate
-...
-@Autowired
-private AppConfigsService appConfigsService;
-public String doSomething() {
-if (appConfigsService.getAppConfigs().getNewFeature().isEnabled()) {
-    return "New Implementation";
-} else {
-    return "Default Implementation";
-}
-}
-...
-Replace Method
-To replace functionality on the method level we can introduce an interface for the target method(s), then implement a “
-proxy
-between two (or more) implementations of that interface
-” bean that switches 
-...
-@Autowired
-private AppConfigsService appConfigsService;
-@Qualifier("replaceMethodNewService")
-@Autowired
-private NewService newService;
-@Qualifier("replaceMethodDefaultService")
-@Autowired
-private DefaultService defaultService;
-Replace Bean
-Bean
-@Override
-public String doSomething() {
-if (appConfigsService.getAppConfigs().getNewFeature().isEnabled()) {
-    return newService.doSomething();
-} else {
-    return defaultService.doSomething();
-}
-}
-...
-To replace a whole bean based on a feature flag we can leverage Springs  
-FactoryBean interface
-method is required by another bean in the application context, Spring will ask the 
-FactoryBean
-. Each time a bean defined using the 
-for that bean.
-@Component("replaceBeanFeatureFlaggedService")
-public class FeatureFlaggedService extends 
-FeatureFlagFactoryBean<Service> {
-Factory
-public FeatureFlaggedService(AppConfigsService appConfigsService) {
-        super(
-        Service.class,
-        () -> appConfigsService.getAppConfigs().getNewFeature().
-isEnabled(),
-        new NewService(),
-        new DefaultService()
-    );
-}
-}
-Replace Module
-The  
-FactoryBean interface
-can be used to replace a set of beans also
+```java
 @Configuration
 public class FeatureFlaggedServiceModule {
-@Autowired
-private AppConfigsService appConfigsService;
-@Bean("replaceModuleService1")
-FeatureFlagFactoryBean<Service1> service1() {
-    return new FeatureFlagFactoryBean<>(
-            Service1.class,
-            () -> appConfigsService.getAppConfigs().getNewFeature().
-isEnabled(),
-            new NewService1(),
-            new DefaultService1());
-}
-@Bean("replaceModuleService2")
-FeatureFlagFactoryBean<Service2> service2() {
-    return new FeatureFlagFactoryBean<>(
-            Service2.class,
-            () -> appConfigsService.getAppConfigs().getNewFeature().
-isEnabled(),
-            new NewService2(),
-            new DefaultService2());
+    @Autowired
+    private AppConfigsService appConfigsService;
+    @Bean("replaceModuleService1")
+    FeatureFlagFactoryBean<Service1> service1() {
+        return new FeatureFlagFactoryBean<>(
+                Service1.class,
+                () -> appConfigsService.getAppConfigs().getNewFeature().isEnabled(),
+                new NewService1(),
+                new DefaultService1());
+    }
+    @Bean("replaceModuleService2")
+    FeatureFlagFactoryBean<Service2> service2() {
+        return new FeatureFlagFactoryBean<>(
+                Service2.class,
+                () -> appConfigsService.getAppConfigs().getNewFeature().isEnabled(),
+                new NewService2(),
+                new DefaultService2());
 }
 ...
-Considerations
-keep toggle logic simple, don't cascade multiple feature flags
-lifecycle and cleanup should be part of the process
-feature flags will add complexity to testing/automation
-who deploys? In other WH teams it is the CSMs responsibility
-AppConfig instances?
-maybe a spring boot starter for App Config Data connectivity?
-References
+```
+
+## Considerations
+
+- keep toggle logic simple, don't cascade multiple feature flags
+- lifecycle and cleanup should be part of the process
+- feature flags will add complexity to testing/automation
+- who deploys? In other WH teams it is the CSMs responsibility
+- maybe a spring boot starter for App Config Data connectivity?
+
+
+## References
 https://martinfowler.com/articles/feature-toggles.html
 https://launchdarkly.com/blog/what-are-feature-flags/
 https://reflectoring.io/spring-boot-feature-flags/
@@ -417,3 +342,4 @@ https://mng.workshop.aws/appconfig/cloudwatch-alarm.html
 https://aws.amazon.com/blogs/mt/best-practices-for-validating-aws-appconfig-feature-flags-and-configuration-data/
 https://launchdarkly.com/blog/operational-flags-best-practices/
 https://aws.amazon.com/blogs/mt/tracking-feature-flags-in-jira-with-aws-appconfig
+
