@@ -49,7 +49,7 @@ _(aka Feature Toggles, Feature Flippers, Feature Switch, Feature Controls, Featu
 A feature flag is used to enable or disable functionality without deploying code. New features can be deployed without making them visible to 
 users. Feature flags help decouple deployment from release.
   
-Feature toggles can be categorized as
+Feature toggles can be [categorized](https://martinfowler.com/articles/feature-toggles.html#CategoriesOfToggles) as
 
 
 **Release toggles** - These toggles are used to hide incomplete features from groups of users or from all users.  
