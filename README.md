@@ -174,26 +174,8 @@ The application must then request the latest data from AppConfig.
 
 
 ## Application Configuration
-The example code in this guide adds Feature Flag functionality to a sample client.
+The example code in this guide adds Feature Flag functionality to a sample client.  
 The following libraries were used…
-
-Dependency
-Maven Library
-previous guides
-)
-Description
-appconfigdata
-AppConfigData
-Spring Cloud AWS Messaging 
-Starter
-Jackson Databind
-The AWS Java SDK for App Config Data module holds the client 
-classes that are used for communicating with App Config Data.
-Note: This package is from the [AWS SDK v2](https://github.com/aws/aws-sdk-java-v2) which amazon  recommend is used going forward… i.e. do not use older v1 libs
-which amazon 
-spring-cloud-starter-aws-messaging
-jackson-databind
-
 
 | **Dependency** | **Maven Library** | **Description** |
 |----------------|-----------------|------------------|
