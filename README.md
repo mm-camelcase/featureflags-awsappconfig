@@ -218,8 +218,8 @@ Some example flags...
 
 There are some recommended guidelines to help feature flag functionality in the codebase from becoming messy or turning into technical debt.
 - _De-Couple decision points from the feature flag logic_ - in the example code feature flag state is [updated independently](impl/AppConfigListener.java) from decision points.
-- Inversion of control - further decouple modules from the feature flagging system using [IoC](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
-- Minimize conditionals - keep the codebase maintainable by avoiding directly adding `if-else` statement blocks to code. Especially if a feature is long lived or requires several toggles.
+- _Inversion of control_ - further decouple modules from the feature flagging system using [IoC](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
+- _Minimize conditionals_ - keep the codebase maintainable by avoiding directly adding `if-else` statement blocks to code. Especially if a feature is long lived or requires several toggles.
 
 #### Toggles at the edge
 
