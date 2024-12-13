@@ -1,11 +1,3 @@
-# featureflags-awsappconfig
-A walkthrough describing ...
-
-
-todo - change int refs to cc
-
-######################################################
-
 ## Feature Flags with AWS AppConfig  
 
 
@@ -330,16 +322,15 @@ public class FeatureFlaggedServiceModule {
 - keep toggle logic simple, don't cascade multiple feature flags
 - lifecycle and cleanup should be part of the process
 - feature flags will add complexity to testing/automation
-- who deploys? In other WH teams it is the CSMs responsibility
-- maybe a spring boot starter for App Config Data connectivity?
+- App Config Data connectivity can be encapsulated in a Spring Boot Starter?
 
 
 ## References
-https://martinfowler.com/articles/feature-toggles.html
-https://launchdarkly.com/blog/what-are-feature-flags/
-https://reflectoring.io/spring-boot-feature-flags/
-https://mng.workshop.aws/appconfig/cloudwatch-alarm.html
-https://aws.amazon.com/blogs/mt/best-practices-for-validating-aws-appconfig-feature-flags-and-configuration-data/
-https://launchdarkly.com/blog/operational-flags-best-practices/
-https://aws.amazon.com/blogs/mt/tracking-feature-flags-in-jira-with-aws-appconfig
+https://martinfowler.com/articles/feature-toggles.html  
+https://launchdarkly.com/blog/what-are-feature-flags/  
+https://reflectoring.io/spring-boot-feature-flags/  
+https://mng.workshop.aws/appconfig/cloudwatch-alarm.html  
+https://aws.amazon.com/blogs/mt/best-practices-for-validating-aws-appconfig-feature-flags-and-configuration-data/  
+https://launchdarkly.com/blog/operational-flags-best-practices/  
+https://aws.amazon.com/blogs/mt/tracking-feature-flags-in-jira-with-aws-appconfig  
 
