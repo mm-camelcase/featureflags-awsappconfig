@@ -39,7 +39,7 @@ The accompanying source code for this guide...
 
 | **Repo** | **Description** |
 |----------------|-----------------|
-| [Sample Application Code](impl/)  | Sample Spring Boot project with AWS AppConfig  |
+| [Sample Application Code](impl/)  | Implementation code necessary for a Spring Boot application to interact with AWS AppConfig.  |
 | [Infrastructure as Code](infra/)  | Configurations for defining the necessary infrastructure required for a feature flag implementation using AWS AppConfig. Resources include AppConfig’s application, environments, configuration profiles, extension associations and IAM permissions.   | 
  
 ### About Feature Flags
