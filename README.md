@@ -14,7 +14,7 @@ TOC
 
  ### Overview
  
-This walk-through describes how to implement and configure feature flags in a stand alone Spring Boot application backed by AWS AppConfig.
+This walk-through describes how to implement and configure feature flags in a stand alone Spring Boot application backed by AWS AppConfig. The application has been deployed to AWS ECS (todo: link to guide).
 The accompanying source code for this guide...
 
 | **Repo** | **Description** |
@@ -48,7 +48,7 @@ back the configuration.
     - _**Feature Flags**_ - A predefined format for defining feature flags. Configs are store in AppConfig storage. Validated against a predefined 
 schema.
     - _**Freeform**_ - Create configurations in YAML, JSON or text. Can be stored in S3, Systems Manager or Parameter Store. Validator need to be configured manually.
-- For this example we defined the following resources:
+- For this [example](infra/appconfig.tf) we defined the following resources:
   - 1 application
   - 1 environment (dev)
   - 2 configuration profiles (sandbox & live)
@@ -74,7 +74,7 @@ schema.
 }
 ```
 
-To allow AppConfig deployment rollbacks triggered by CloudWatch alarms, configure the following IAM roles and policy
+To allow AppConfig deployment rollbacks triggered by CloudWatch alarms, configure the following [IAM roles and policy](infra/iam.tf#L38-L75)
 
 ```hcl
 resource "aws_iam_policy" "cc_poc_rollback" {
