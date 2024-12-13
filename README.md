@@ -204,50 +204,26 @@ awsappconfig:
 
 ### Example Feature Flags
 
-The example code has these flags...
+Some example flags...
+
+| **Key/Name** | **Description** |
+|----------------|-----------------|
+| `logLevels`  | When true will override the default log level. Can set the level to `INFO`, `WARN`, `DEBUG` (these values are validated by AppConfig)  |
+| `newFeature`  | Showcases various implementation strategies for switching behavior: <br> - [Conditional](impl/) <br> - [Replace Method](impl/) <br> - [Replace Bean](impl/) <br> - [Replace Module](impl/)                                                                  |  
+| `newPersonFeature`  | When true will add a new field to a Person model, if the target person is a member the associated list of clients  |
+| `badFeature`  | When enabled throws errors to the logs. When deployed with certain deployment strategies (e.g. AllAtOnce) will cause AppConfig to rollback the configuration deployment.  |
 
 
+### Implementation Strategies
 
-
-Key/Name
-logLevels
-newFeature
-newPersonFeature
-badFeature
-Implementation Strategies
-Description
-When true will 
-override
-values are validated by AppConfig)
-the default log level. Can set the level to 
-, 
-INFO WARN DEBUG
-or 
-Showcases various implementation strategies for switching behavior:
-Conditional
-Replace Method
-Replace Bean
-Replace Module
-more details below
-When true will 
-add a new field
-associated list of clients
-When enabled 
-to a Person model, if the target person is a member the 
-throws errors
-) will cause AppConfig to rollback the configuration deployment.
-(these 
-to the logs. When deployed with certain deployment strategies (e.g. 
-AllAtOnce
 There are some recommended guidelines to help feature flag functionality in the codebase from becoming messy or turning into technical debt.
-De-Couple decision points from the feature flag logic - in the example code feature flag state is 
-Inversion of control - further decouple modules from the feature flagging system using 
-Minimize conditionals - keep the codebase maintainable by avoiding directly adding 
-IoC
-.
-if-else
-updated independently
-from decision points
+- _De-Couple decision points from the feature flag logic_ - in the example code feature flag state is [updated independently](impl/AppConfigListener.java) from decision points.
+- Inversion of control - further decouple modules from the feature flagging system using [IoC](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
+- Minimize conditionals - keep the codebase maintainable by avoiding directly adding `if-else` statement blocks to code. Especially if a feature is long lived or requires several toggles.
+
+
+
+updated independently from decision points
 statement blocks to code. Especially if a feature 
 is long lived or requires several toggles
 Toggles at the edge
