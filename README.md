@@ -12,7 +12,7 @@ The accompanying source code for this guide...
 | **Repo** | **Description** |
 |----------------|-----------------|
 | [Sample Application Code](impl/)  | Implementation code necessary for a Spring Boot application to interact with AWS AppConfig.  |
-| [Infrastructure as Code](infra/)  | Configurations for defining the necessary infrastructure required for a feature flag implementation using AWS AppConfig. Resources include AppConfig’s application, environments, configuration profiles, extension associations and IAM permissions.   | 
+| [Infrastructure as Code](infra/)  | Configurations for defining the necessary infrastructure required for a feature flag implementation using AWS AppConfig. Resources include AppConfig’s application, environments, configuration profiles, extension associations, and IAM permissions.   | 
  
 ### About Feature Flags
  
@@ -37,7 +37,7 @@ Feature toggles can be [categorized](https://martinfowler.com/articles/feature-t
 alarms for each environment. The system monitors alarms during a configuration deployment. If an alarm is triggered, the system rolls 
 back the configuration.
   - **Configuration profile** - a set of configurations or feature flags. There are 2 types…
-    - _**Feature Flags**_ - A predefined format for defining feature flags. Configs are store in AppConfig storage. Validated against a predefined 
+    - _**Feature Flags**_ - A predefined format for defining feature flags. Configs are stored in AppConfig storage. Validated against a predefined 
 schema.
     - _**Freeform**_ - Create configurations in YAML, JSON or text. Can be stored in S3, Systems Manager or Parameter Store. Validator need to be configured manually.
 - For this [example](infra/appconfig.tf) we defined the following resources:
@@ -118,8 +118,8 @@ resource "aws_iam_role_policy_attachment" "cc_poc_rollback" {
 ## How AppConfig works in your application
 
 ### Vanilla behavior
-The application set up an client side AppConfig session and intermittently polls for updates to feature flag data. When the
-- response returns data, the server side data has been updated and your app should reflect that
+The application setup a client-side AppConfig session and intermittently polls for updates to feature flag data. When the
+- response returns data, the server-side data has been updated and your app should reflect that
 - response is empty, you already have the latest data
 
 ### AppConfig integrated with AWS messaging
@@ -158,7 +158,7 @@ The AWS AppConfig [configuration](infra/appconfig-sqs.tf) in the example code ha
 The application must then request the latest data from AppConfig.
 
 > :warning: **Note:** Although AppConfig can integrate with AWS messaging, the vanilla polling rules must still be followed. This is the client application behavior:
-> - Event is detected in application
+> - Event is detected in the application
 > - Application starts asynchronous polling session
 > - Application polls until no data is returned in the response
 > - Polling ends  
@@ -180,7 +180,7 @@ The following libraries were used…
 The implementation consists of...
 
 - a [listener](impl/AppConfigListener.java#L27) that listens for SQS events associated with the AppConfig configuration
-  > :information_source: **Info:** If  multiple task/container instances are required the a SNS AppConfig extension integration should be used.
+  > :information_source: **Info:** If multiple task/container instances are required a SNS AppConfig extension integration should be used.
 - a [service](impl/AppConfigRequestService.java#L26) that can retrieve App Config Data
 - a [service](impl/AppConfigsService.java) that stores feature flag state in memory
 - properties in `application.yml`
