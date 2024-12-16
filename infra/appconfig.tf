@@ -1,6 +1,6 @@
 resource "aws_appconfig_application" "cc_poc" {
   name        = "cc-poc-app"
-  description = "Integrations PoC Application"
+  description = "PoC Application"
 
   tags = {
     Type = "AppConfig Application"
@@ -10,7 +10,7 @@ resource "aws_appconfig_application" "cc_poc" {
 
 resource "aws_appconfig_environment" "cc_poc" {
   name           = var.environment
-  description    = "Integrations PoC AppConfig Environment"
+  description    = "PoC AppConfig Environment"
   application_id = aws_appconfig_application.cc_poc.id
 
   monitor {
@@ -26,7 +26,7 @@ resource "aws_appconfig_environment" "cc_poc" {
 
 resource "aws_appconfig_configuration_profile" "cc_poc_sandbox" {
   application_id = aws_appconfig_application.cc_poc.id
-  description    = "Integrations PoC sandbox Profile"
+  description    = "PoC sandbox Profile"
   name           = "cc-poc-sandbox-profile"
   location_uri   = "hosted"
   type           = "AWS.AppConfig.FeatureFlags"
